@@ -1,24 +1,26 @@
-package com.alura.gerenciador.servlet;
+package com.alura.gerenciador.accion;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ModificarEmpresaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import com.alura.gerenciador.modelo.DB;
+import com.alura.gerenciador.modelo.Empresa;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("Empresa modificada");
-			
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class ModificarEmpresa {
+	
+	public String ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		String nombreEmpresa = request.getParameter("nombre");
 		String fechaAberturaEmpresa = request.getParameter("fecha");
 		String paramId = request.getParameter("id");
 		Integer id = Integer.valueOf(paramId);
+		
+		System.out.println("Modificando empresa "+id);
 		
 		Date fechaAbertura = null;
 		try {
@@ -33,8 +35,8 @@ public class ModificarEmpresaServlet extends HttpServlet {
 		empresa.setNombre(nombreEmpresa);
 		empresa.setFechaAbertura(fechaAbertura);
 		
-		response.sendRedirect("listaEmpresas");
+		return "redirect:entrada?accion=ListaEmpresas";
 		
 	}
-
+	
 }
