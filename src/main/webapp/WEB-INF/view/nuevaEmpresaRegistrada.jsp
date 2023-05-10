@@ -2,6 +2,7 @@
 
 <html>
 	<body>
+		<c:import url="logout-parcial.jsp"></c:import>
 		<c:if test="${not empty nombreEmpresa}">
 			<h1>Empresa ${nombreEmpresa} registrada</h1>		
 		</c:if>

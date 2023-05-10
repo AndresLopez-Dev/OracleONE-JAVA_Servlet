@@ -9,6 +9,7 @@
 </head>
 <body>
 	
+	<c:import url="logout-parcial.jsp"></c:import>
 	<form action= "${linkEntradaServlet}" method="post">
 		<label for="nombre">Nombre empresa:</label>
 		<input type="text" name="nombre" value="${empresa.nombre}"/><br><br>
